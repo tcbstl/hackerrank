@@ -1,0 +1,37 @@
+function countingValleys(n, s) {
+
+  let stepArray = s.split('');
+  let stepValue = 0;
+  let sealevelArray = [];
+  let valleysEntered = 0;
+  let completedValleys = 0;
+
+  for (let i = 0; i < stepArray.length; i++){
+    if (stepArray[i] === "U"){
+      stepArray[i] = 1;
+    }
+    else {
+      stepArray[i] = -1;
+    }
+  }
+
+  for (let i = 0; i < stepArray.length; i++){
+    stepValue = stepValue + stepArray[i];
+    sealevelArray[i] = stepValue;
+  }
+
+  for (let i = 0; i < sealevelArray.length; i++){
+    if (sealevelArray[i] === -1){
+      valleysEntered = 1;
+      let valleyEntrance = i;
+    }
+
+    if (valleysEntered === 1 && sealevelArray[i] === 0){
+      completedValleys = completedValleys+1;
+      valleysEntered=0;
+      }
+    }
+    console.log(valleysEntered);
+    return completedValleys;
+
+}
